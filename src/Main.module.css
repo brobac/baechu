@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "BMHANNAPro";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fullpage {
+  height: 100%;
+  background-color: rgb(231, 227, 221);
+}
+
+#inputSection {
+  font-family: "BMHANNAPro";
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(./img/pizza.jpg) center center no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  font-family: "BMHANNAPro";
+  width: 500px;
+  background: none;
+  border: none;
+  border-bottom: 4px solid whitesmoke;
+  caret-color: whitesmoke;
+  color: whitesmoke;
+  font-size: 4rem;
+}
+.input:focus {
+  border-bottom: 10px whitesmoke;
+  outline: none;
+}
+
+.ment {
+  font-size: 4rem;
+  color: whitesmoke;
+}
+
+.submit {
+  font-family: "BMHANNAPro";
+  background: whitesmoke;
+  border: none;
+  cursor: pointer;
+  font-size: 3rem;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 50%,
+    transparent 50.1%
+  );
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+.submit:hover {
+  background-size: 200% 100%;
+}
