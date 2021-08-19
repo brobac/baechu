@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   z-index: 100;
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 .logo {
-  height: 4rem;
+  height: 5rem;
 }

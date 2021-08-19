@@ -15,14 +15,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .mainMent {
-  width: 80vw;
   font-family: "BMHANNAPro";
   font-size: 6rem;
   color: white;
-  text-shadow: 0.03em 0.03em 0.02em #999;
+  text-shadow: 0.05em 0.05em 0.02em #999;
+  margin-right: 10vh;
 }
 
 #inputSection {
@@ -30,9 +31,11 @@
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url(./img/pizza.jpg) center center no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 #resultSection {
@@ -41,8 +44,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
-
+.featureForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .inputArea {
   display: flex;
   align-items: center;
@@ -70,7 +79,7 @@
   color: whitesmoke;
 }
 
-.submit {
+/* .submit {
   font-family: "BMHANNAPro";
   background: whitesmoke;
   display: block;
@@ -93,6 +102,21 @@
 
 .submit:hover {
   background-size: 200% 100%;
+} */
+
+.submitBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.submitMent {
+  color: whitesmoke;
+  font-size: 3.5rem;
+}
+.bell {
+  width: 5rem;
 }
 
 .resultContainer {
