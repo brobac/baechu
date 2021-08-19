@@ -9,19 +9,34 @@ import { tSTypeLiteral } from "@babel/types";
 
 export default function Main() {
   const [isSubmit, setIsSubmit] = useState(false);
+  const [input, setInput] = useState("");
+  const [foodDataList, setFoodDataList] = useState([]);
+  
+  const onChange = (e) => {
+    setInput(e.target.value);
+  }
+
 
   const onSubmit = (e) => {
-    window.scrollTo(0, document.body.scrollHeight);
+    setIsSubmit(true);
     axios
-      .post("url", {
-        userInput: "",
+      .get("http://localhost:8000/api/food_data/", {
+        params:{
+          keyword : input
+        }
       })
-      .then((response) => {})
+      .then((response) => {
+        setFoodDataList(response.data);
+        console.log(  );
+        console.log(response.data);
+        setInput("");
+        window.scrollTo(0, document.body.scrollHeight);
+
+      })
       .catch((error) => {
         console.log(error);
       });
   };
-  const tlist = [1, 1, 1];
   return (
     <>
       {/* <ReactPageScroller transitionTimingFunction={"cubic-bezier(0.5,0,0.5,1)"}> */}
@@ -40,13 +55,15 @@ export default function Main() {
             <input
               type="text"
               spellCheck={false}
-              placeholder="매콤한 거"
+              value={input}
+              placeholder="매콤한"
               className={`${style.input}`}
+              onChange={onChange}
             />
-            <span className={`${style.ment}`}>먹고싶어요</span>
+            <span className={`${style.ment}`}>음식 먹고싶어요</span>
           </div>
           <div className={style.submitBox} onClick={onSubmit}>
-            <p className={style.submitMent}>주문!</p>
+            <p className={style.submitMent}>결과는?</p>
             <img src={bell} alt="bell" className={style.bell} />
           </div>
           {/* <input
@@ -57,7 +74,7 @@ export default function Main() {
           /> */}
         </form>
       </section>
-      {isSubmit || (
+      {isSubmit && (
         <section id={style.resultSection} className={`${style.fullpage}`}>
           <div className={`${style.resultContainer}`}>
             <div className={`${style.mentBox}`}>
@@ -65,8 +82,8 @@ export default function Main() {
               <p className={style.rSecMent}>추천합니다!</p>
             </div>
             <div className={`${style.cardBox}`}>
-              {tlist.map((t, i) => (
-                <FoodCard key={i} />
+              {foodDataList.map((f, i) => (
+                <FoodCard fno={f.fno} sence={f.sence} name={f.name} path={f.path} good={f.good} bad={f.bad} key={i} />
               ))}
             </div>
           </div>

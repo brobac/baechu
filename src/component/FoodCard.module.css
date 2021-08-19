@@ -12,10 +12,14 @@
   transform: translateY(-0.3rem);
 }
 
-.image {
+.imageBox {
   width: 250px;
   height: 220px;
-  background-color: #999999;
+  display: flex;
+}
+
+.image{
+  width: 100%;
 }
 
 .foodName {

@@ -4,7 +4,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import axios from "axios";
 
-export default function FoodCard() {
+export default function FoodCard({name, path, good, bad, fno, sence}) {
   const [clicked, setClicked] = useState({
     like: false,
     dislike: false,
@@ -18,7 +18,14 @@ export default function FoodCard() {
         like: true,
       });
       console.log(clicked);
-      axios.post("url", {}).then().catch();
+      axios.get("http://localhost:8000/api/food_good/", {
+        params:{
+          fno: fno,
+          sence: sence
+        }
+      })
+      .then((response)=>
+      {console.log(response.data)}).catch((e)=>{console.log(e)});
     } else {
       setClicked({
         ...clicked,
@@ -48,11 +55,11 @@ export default function FoodCard() {
   return (
     <>
       <div className={`${style.container}`}>
-        <div className={`${style.image}`}>
-          <img src="" alt="음식이름" />
+        <div className={`${style.imageBox}`}>
+          <img src={`images/${path}`} alt={name} className={style.image} />
         </div>
         <div className={`${style.foodName}`}>
-          <p>매운돼지갈비찜</p>
+          <p>{name}</p>
         </div>
         <div className={`${style.feedbackBox}`}>
           <div className={style.like}>
@@ -61,7 +68,7 @@ export default function FoodCard() {
               size={40}
               color={like ? "#ff7473" : "#9f9f9f"}
             />
-            <p>100</p>
+            <p>{good}</p>
           </div>
           <div className={style.dislike}>
             <AiOutlineDislike
@@ -69,7 +76,7 @@ export default function FoodCard() {
               size={40}
               color={dislike ? "#ff7473" : "#9f9f9f"}
             />
-            <p>200</p>
+            <p>{bad}</p>
           </div>
         </div>
       </div>
